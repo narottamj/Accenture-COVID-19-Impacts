@@ -1,0 +1,2 @@
+# Project: COVID-19’s Impact on Low Income Low Access Communities (LILA)
+# Description: Low Income Low Access (LILA) communities are areas hit by poverty and a lack of access to nutritious food. The USDA collects data about these communities, but the last time this data was updated was in 2019. A lot has changed in those 2 years, and we would like to be able to predict the impact Covid-19 has had on these communities. Further, and if time allows, we would like to be able to identify areas prime for targeted nutrition education or investment in healthy food options.

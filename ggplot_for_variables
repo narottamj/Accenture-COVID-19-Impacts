@@ -1,0 +1,131 @@
+
+library(tidycensus)
+library(tidyverse)
+library(RCurl)
+
+mydata <- read.csv('02.17.2022.model.df.csv')
+mydata[,1]<- as.character(mydata[,1])
+
+cn <- as.data.frame(colnames(mydata))
+colnames(mydata)
+
+#getting the mapping data from census 
+got_poly <- get_decennial(geography = "tract", year = 2020, state = "12", variables = "P1_001N", 
+                          geometry = TRUE, key = '7301d35d01744887fb3295152a3b3d821af9fdbf') %>% 
+  select(GEOID, geometry)
+
+#graph for Property.Value.Standardized 
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (Property.Value.Standardized))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for Property.Value.Standardized 
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (Land.Value.per.Acre.as.is))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for Land.Value.1.4.Acre.Lot.Standardized
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (Land.Value.1.4.Acre.Lot.Standardized))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for HousingUnits
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (HousingUnits))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for TotalPopulation
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (TotalPopulation))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for KidsShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (KidsShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for SeniorsShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (SeniorsShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for WhiteShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (WhiteShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for BlackShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (BlackShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for AsianShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (AsianShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for NHOPIShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (NHOPIShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for AIANShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (AIANShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for OMultirShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (OMultirShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for HispanicShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (HispanicShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for HUNVShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (HUNVShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for SNAPShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (SNAPShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for DollarStoreShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (DollarStoreShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for SnapStoreShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (SnapStoreShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+#graph for WalmartShare
+left_join(got_poly, mydata, by=c("GEOID"="CensusTract")) %>%
+  ggplot2::ggplot(aes(fill = (WalmartShare))) + 
+  geom_sf(size = 0) + 
+  scale_fill_gradient()
+
+
